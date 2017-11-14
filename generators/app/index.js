@@ -293,6 +293,8 @@ module.exports = class extends Generator {
     if (this.props.usePwa) {
       this.composeWith(require.resolve('./pwa'));
     }
+    // Perform an upgrade on the deps
+    this.composeWith(require.resolve('./ncu'));
   }
 
   /**
