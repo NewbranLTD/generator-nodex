@@ -1,0 +1,14 @@
+This mini generator allow you to create a systemd startup script for use in Linux (that support systemd)
+
+It can be use even without the main installation via nodex
+
+  $ yo nodex:systemd
+
+Just go through the Q&A and it will generate the file for you.
+And follow the instruction in the end to install the script.
+
+You can also specify where you want to script to be via --generate-into flag
+
+  $ sudo yo nodex:systemd --generate-into /etc/systemd/system
+
+But it's advice to check the file before you move to the systemd location. 

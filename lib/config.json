@@ -1,0 +1,16 @@
+{
+  "lang": "en",
+  "langPath": "./lang",
+  "srcDir": "src",
+  "appDir": "app",
+  "scriptDir": "app/scripts",
+  "cssDir": "app/css",
+  "assetDir": "app/assets",
+  "imgDir": "app/assets/images",
+  "iconDir": "app/assets/images/icons",
+  "componentDir": "app/scripts/components",
+  "moduleDir": "app/scripts/modules",
+  "routeDir": "app/scripts/routes",
+  "serviceDir": "app/scripts/services",
+  "mixinDir": "app/scripts/mixins"
+}

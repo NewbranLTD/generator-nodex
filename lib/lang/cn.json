@@ -1,0 +1,75 @@
+{
+  "language": "中文",
+  "whichInstallerToUse": "使用哪个安装程序",
+  "travis": "添加 travis 配置文档",
+  "boilerplate": "添加样板文件",
+  "cli": "添加 CLI",
+  "coveralls": "添加 coveralls 配置文档",
+  "editorconfig": "添加 .editorconfig 文件",
+  "license": "添加许可证",
+  "PROJECT_NAME": "项目名称",
+  "githubAccount": "GitHub 用户名或组织名",
+  "whichInstallerToUse": "使用哪个安装程序",
+  "projectRoot": "项目代码根的相对路径",
+  "readme": "要在自述文件 README.md 中插入的内容",
+  "moduleName": "模块名称",
+  "description": "应用程序的描述",
+  "homepage": "项目主页网址",
+  "authorName": "作者姓名",
+  "authorEmail": "作者的电子邮件",
+  "authorUrl": "作者的网站",
+  "keywords": "打包关键字 (以逗号分隔)",
+  "includeCoveralls": "将测试覆盖范围报告发送到 coveralls",
+  "thankyou": "感谢使用 Yeoman <%= generator %>",
+  "ERR_MODULE_NOT_FOUND": "未找到组件 <%= module %>!",
+  "generateInto": "重新定位生成的文件的位置.",
+  "newModuleName": "新的模块名称",
+  "projectDesc": "项目介绍",
+  "githubUser": "Github 用户名",
+  "content": "自述文件 README.md 的内容",
+  "travisUrl": "启用 Travis 集成的网址 <%= travisUrl %>",
+  "coverallsUrl": "启用 Coverall 集成的网址 <%= coverallsUrl %>",
+  "runningInstaller": "我们现在正在使用 <%= installer %> 为您运行程序安装",
+  "baseconfig": "提供一个json文件路径 --baseconfig=路径/至/config.json",
+  "Which license do you want to use?": "你想使用哪个许可证？",
+  "Do you want to use Travis?": "你想要使用 Travis 吗?",
+  "Provide a cache name": "提供网页缓存名称",
+  "Your start up url for PWA": "您的 PWA 启动网址",
+  "What port number is your server listening to?": "你的服务器听什么端口号？",
+  "What's your server domain name?": "你的服务器域名是什么？",
+  "What's your localhost name (running nodejs app instance)?":
+    "什么是您的本地名称（运行nodejs应用程序实例）？",
+  "What's the port number your nodejs app running from?":
+    "你的nodejs应用程序运行的端口号是什么？",
+  "Do you want to create a www.[your server name] domain entry?":
+    "您要创建www.[您的服务器名称]域条目吗？",
+  "Do you want to forward your www.[your server name] to your [server name]?":
+    "您要将您的www.[您的服务器名称]转发到您的[服务器名称]吗？",
+  "Do you want to create a nginx proxy config file?":
+    "你要创建一个nginx代理配置文件吗？",
+  "Your answer is": "你的答案是",
+  "yes": "是",
+  "no": "否",
+  "This is an example plop generator": "这是一个示例",
+  "Yes or no?": "是,否?",
+  "package.json not found!": "未找到 package.json!",
+  "Just run `npm run plop`": "只要执行 `<%= cmd %> plop`",
+  "The name of your systemd service (your app name)":
+    "您的systemd服务的名称（您的应用程序名称）",
+  "Provide a description of this systemd service": "提供此systemd服务的描述",
+  "Provide a NODE_ENV variable to your app":
+    "为您的应用程序提供一个NODE_ENV变量",
+  "The system user going to run this node app":
+    "系统用户将运行此 node 程序是谁",
+  "The path to your node installation on this system":
+    "在此系统上安装 node 程序的路径",
+  "The path to the start up script": "启动脚本的路径",
+  "Please make sure you copy this file into the": "请确保您将该文件复制到",
+  "/etc/systemd/system folder (not symbolic link!)":
+    "/etc/systemd/system 文件夹（不是象征链接！）",
+  "Then execute the following commands": "然后执行以下命令",
+  "Your app should start automatically when server start":
+    "服务器启动时应用程序应该自动启动",
+  "SHOULD_USE_CNPM": "如果你在中国，你应该安装 cnpm `npm -i cnpm -g`",
+  "Which license do you want to use?": "你想使用哪个许可证？"
+}
