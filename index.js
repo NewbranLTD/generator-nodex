@@ -20,8 +20,8 @@ module.exports = {
   systemd: require.resolve('./generators/systemd'),
   pwa: require.resolve('./generators/pwa'),
   plop: require.resolve('./generators/plop'),
-  // Adding this here for testing still need a lot more development
-  // to make it available to use in other generators @TODO
+  ext: require.resolve('./generators/ext'),
+  // to make it available to use in other generators
   ExtendedGenerator: require.resolve('./lib/index'),
   pwaUtil: require.resolve('./lib/pwa'),
   // Re-export some of the deps
