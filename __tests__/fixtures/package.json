@@ -1,0 +1,7 @@
+{
+  "name": "test-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "yosay": "^2.0.0"
+  }
+}

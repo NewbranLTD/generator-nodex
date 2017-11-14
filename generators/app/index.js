@@ -291,10 +291,10 @@ module.exports = class extends Generator {
       // Might as well ask them to setup the systemd?
     }
     if (this.props.usePwa) {
-      this.composeWith(require.resolve('./pwa'));
+      this.composeWith(require.resolve('../pwa'));
     }
     // Perform an upgrade on the deps
-    this.composeWith(require.resolve('./ncu'));
+    this.composeWith(require.resolve('../ncu'));
   }
 
   /**
