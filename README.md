@@ -1,8 +1,25 @@
 # Yo Generator nodex [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
+This generator is based on the [`generator-node`](https://github.com/yeoman/generator-node) with many extended features.
+
 `generator-nodex`  creates a base template to start a new Node.js module, with extended features.
 
 It is also easily composed into your own generators so you can only target your efforts at your generator's specific features.
+
+This `generator-nodex` can also use as a parent class and create your own generator (instead of subclass directly from `yeoman-generator`)
+
+```javascript
+const { ExtendedGenerator } = require('generator-nodex');
+
+module.exports = class extends ExtendedGenerator {
+  constructor(args, opts) {
+    super(args, opts);
+  }
+}
+
+```
+
+We are currently working on finishing the last feature before we start putting the full documentation together.
 
 ---
 
@@ -15,13 +32,13 @@ It is also easily composed into your own generators so you can only target your 
   * pwa - this is stand alone, you can call it via `yo nodex:pwa`
   * systemd - this is stand alone, you can call it via `yo nodex:systemd`
   * plop - this is stand alone, you can call it via `yo nodex:plop` (see more below)
+  * ext - this is replace the `plop`
 
 [plop](http://plopjs.cocm) is a mini generator (very much like yeoman itself, but portable).
 The reason why using a generator to create another mini generator is, yeoman is great, but
 not that flexible. What if you have some extra stuff you wanna to do in your project.
 This is where plop comes in handy, it will add extra dependency and script to call it.
-Once it's install, you can call it from the npm `npm run plop` or `yarn plop`. 
-
+Once it's install, you can call it from the npm `npm run plop` or `yarn plop`.
 
 ---
 
