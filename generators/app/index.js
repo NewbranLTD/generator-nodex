@@ -3,6 +3,7 @@ const _ = require('lodash');
 const path = require('path');
 const chalk = require('chalk');
 const parseAuthor = require('parse-author');
+// Const cmdExist = require('command-exists');
 const extend = _.merge;
 const Generator = require('../../lib');
 const pkgJson = require('../../package.json');
@@ -210,12 +211,17 @@ module.exports = class extends Generator {
     if (this.props.includeCoveralls) {
       pkg.devDependencies.coveralls = pkgJson.devDependencies.coveralls;
     }
-
     // Combine the keywords
     if (this.props.keywords && this.props.keywords.length) {
       pkg.keywords = _.uniq(this.props.keywords.concat(pkg.keywords));
     }
-
+    // Additonal package require for performing the ncu checks
+    // @TODO to add swiss army knife
+    /*
+    if (!cmdExist('ncu')) {
+      pkg.devDependencies['npm-check-updates'] = '*';
+    }
+    */
     // Let's extend package.json so we're not overwriting user previous fields
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }

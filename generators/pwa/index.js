@@ -109,7 +109,7 @@ module.exports = class extends Generator {
    * Generate and copy over the files based on the templates
    */
   writing() {
-    // @TODO add lighthouse to the dependencies
+    // @TODO add lighthouse / workbox to the dependencies
     // @TODO add the scripts task to the package.json "./lighthouse http://localhost:8000"
     // The above the parameter should be pass via the options parameters
 

@@ -21,9 +21,8 @@ module.exports = {
   pwa: require.resolve('./generators/pwa'),
   plop: require.resolve('./generators/plop'),
   ext: require.resolve('./generators/ext'),
-  // to make it available to use in other generators
+  // To make it available to use in other generators
   ExtendedGenerator: require.resolve('./lib/index'),
-  pwaUtil: require.resolve('./lib/pwa'),
   // Re-export some of the deps
   lodash: lodash,
   chalk: chalk,
