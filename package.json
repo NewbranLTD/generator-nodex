@@ -27,7 +27,7 @@
   "scripts": {
     "pretest": "eslint . --fix",
     "test": "jest --runInBand --forceExit",
-    "prepublishOnly": "nsp check && yarn test",
+    "_prepublishOnly": "nsp check && yarn test",
     "precommit": "lint-staged"
   },
   "dependencies": {
