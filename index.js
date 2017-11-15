@@ -18,8 +18,9 @@ module.exports = {
   // Extra mini generator
   nginx: require.resolve('./generators/nginx'),
   systemd: require.resolve('./generators/systemd'),
-  pwa: require.resolve('./generators/pwa'),
-  plop: require.resolve('./generators/plop'),
+  ncu: require.resolve('./generators/ncu'),
+  // Pwa: require.resolve('./generators/pwa'),
+  // plop: require.resolve('./generators/plop'),
   ext: require.resolve('./generators/ext'),
   // To make it available to use in other generators
   ExtendedGenerator: require.resolve('./lib/index'),
