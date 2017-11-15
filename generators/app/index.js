@@ -291,8 +291,11 @@ module.exports = class extends Generator {
       // Might as well ask them to setup the systemd?
     }
     if (this.props.usePwa) {
-      this.composeWith(require.resolve('./pwa'));
+      this.composeWith(require.resolve('../pwa'));
     }
+    // Perform an upgrade on the deps
+    // the problem is the package.json is not create here yet ...
+    // this.composeWith(require.resolve('../ncu'));
   }
 
   /**

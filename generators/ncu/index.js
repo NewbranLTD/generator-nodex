@@ -33,7 +33,7 @@ module.exports = class extends Generator {
     console.log(this.options);
   }
 */
-  default() {
+  writing() {
     return ncu
       .run({
         // Always specify the path to the package file
@@ -44,10 +44,12 @@ module.exports = class extends Generator {
         jsonUpgraded: this.options.upgrade
       })
       .then(upgraded => {
-        this.log('dependencies to upgrade');
-        _.forEach(upgraded, (value, key) => {
-          this.log(key, value);
-        });
+        if (process.env.NODE_ENV !== 'testing') {
+          this.log('dependencies to upgrade');
+          _.forEach(upgraded, (value, key) => {
+            this.log(key, value);
+          });
+        }
       });
   }
 };
