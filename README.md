@@ -29,16 +29,11 @@ We are currently working on finishing the last feature before we start putting t
 2. You can import this and, use in your own generator (more detail in the wiki soon).
 3. There are several additional sub generators, more detail below.
   * nginx - this is incorporated into the nodex generator  
-  * pwa - this is stand alone, you can call it via `yo nodex:pwa`
+  * ~~pwa - this is stand alone, you can call it via `yo nodex:pwa` (move to new project goog)~~
   * systemd - this is stand alone, you can call it via `yo nodex:systemd`
-  * plop - this is stand alone, you can call it via `yo nodex:plop` (see more below)
-  * ext - this is replace the `plop`
-
-[plop](http://plopjs.cocm) is a mini generator (very much like yeoman itself, but portable).
-The reason why using a generator to create another mini generator is, yeoman is great, but
-not that flexible. What if you have some extra stuff you wanna to do in your project.
-This is where plop comes in handy, it will add extra dependency and script to call it.
-Once it's install, you can call it from the npm `npm run plop` or `yarn plop`.
+  * ~~plop - this is stand alone, you can call it via `yo nodex:plop` (see more below)~~
+  * ncu - npm-check-updates integrate into the generator
+  * ext - this is to replace the `plop` allow you to attach your own sub generator to your project (coming to v3.2.0)
 
 ---
 

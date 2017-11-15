@@ -71,5 +71,7 @@
   "Your app should start automatically when server start":
     "服务器启动时应用程序应该自动启动",
   "SHOULD_USE_CNPM": "如果你在中国，你应该安装 cnpm `npm -i cnpm -g`",
-  "Which license do you want to use?": "你想使用哪个许可证？"
+  "Which license do you want to use?": "你想使用哪个许可证？",
+  "Now you can run `yo nodex:ncu` to check if your packages are all up to date":
+    "现在你可以运行`yo nodex:ncu`来检查你的软件包是否都是最新的"
 }

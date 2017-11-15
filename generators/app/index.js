@@ -328,5 +328,15 @@ module.exports = class extends Generator {
     }
     // Make sure everything save into yo-rc.json
     this.config.set(_.extend(this.props, { lang: this.lang }));
+    // Finally tell the user how to use ncu
+    if (!this.options['skip-nodex-install']) {
+      this.log(
+        chalk.yellow(
+          this.t(
+            'Now you can run `yo nodex:ncu` to check if your packages are all up to date'
+          )
+        )
+      );
+    }
   }
 };
