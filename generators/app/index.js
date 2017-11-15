@@ -294,7 +294,8 @@ module.exports = class extends Generator {
       this.composeWith(require.resolve('../pwa'));
     }
     // Perform an upgrade on the deps
-    this.composeWith(require.resolve('../ncu'));
+    // the problem is the package.json is not create here yet ...
+    // this.composeWith(require.resolve('../ncu'));
   }
 
   /**

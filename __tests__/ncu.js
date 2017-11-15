@@ -6,7 +6,7 @@ const rootPkg = require('../package.json');
 describe('nodex:ncu', () => {
   beforeEach(() => {});
 
-  it('setup ncu in project', () => {
+  it.skip('setup ncu in project', () => {
     return helpers.run(require.resolve('../generators/ncu')).then(() => {
       assert.jsonFileContent('package.json', {
         devDependencies: {

@@ -33,7 +33,7 @@ module.exports = class extends Generator {
     console.log(this.options);
   }
 */
-  default() {
+  writing() {
     return ncu
       .run({
         // Always specify the path to the package file
