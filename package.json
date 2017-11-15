@@ -1,6 +1,6 @@
 {
   "name": "generator-nodex",
-  "version": "3.0.16",
+  "version": "3.0.17",
   "description":
     "使用语言选项创建 node.js 模块 / Create a Node.js module with language option. Pass `yo nodex --lang=cn | en` ",
   "homepage": "https://github.com/NewBrandLTD/generator-nodex",
