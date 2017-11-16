@@ -23,7 +23,7 @@ module.exports = {
   // plop: require.resolve('./generators/plop'),
   ext: require.resolve('./generators/ext'),
   // To make it available to use in other generators
-  ExtendedGenerator: require.resolve('./lib/index'),
+  // ExtendedGenerator: require.resolve('./lib/index'),
   // Re-export some of the deps
   lodash: lodash,
   chalk: chalk,
