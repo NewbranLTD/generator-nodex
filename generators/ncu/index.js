@@ -3,6 +3,7 @@
  */
 const Generator = require('../../lib/index.js');
 const ncu = require('npm-check-updates');
+const fsExtra = require('fs-extra');
 const chalk = require('chalk');
 const _ = require('lodash');
 // Export
@@ -68,7 +69,17 @@ module.exports = class extends Generator {
             }
           });
           // This will produce the same conflict error message which is fine
-          this.fs.writeJSON(this.options.json, pkg);
+          // this is broken on mac just can't select the options
+          // so instead we use the fs-extra to just force overwrite it
+          // this.fs.writeJSON(this.options.json, pkg);
+          fsExtra
+            .writeJson(this.options.json, pkg)
+            .then(() => {
+              this.log(chalk.yellow(this.t('package.json updated!')));
+            })
+            .catch(err => {
+              this.log(chalk.red(err));
+            });
         }
         // No output when it's in the test
         if (process.env.NODE_ENV !== 'testing') {

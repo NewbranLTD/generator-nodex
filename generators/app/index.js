@@ -331,6 +331,13 @@ module.exports = class extends Generator {
           )
         )
       );
+      this.log(
+        chalk.green(
+          this.t(
+            'You can also checkout the `yo nodex:nginx` & `yo nodex:systemd` sub generator'
+          )
+        )
+      );
     }
   }
 };
