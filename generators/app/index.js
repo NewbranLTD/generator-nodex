@@ -248,8 +248,15 @@ module.exports = class extends Generator {
     });
     // Setup jest
     // @TODO should let the user choose between Mocha/Chai or Jest
+    /*
+    HOW TO:
+    yo jest:test path/to/file-to-test.js
+
+    # (optional) You can specifically define your component name
+    yo jest:test path/to/file-to-test.js --componentName=useThisName
+    */
     this.composeWith(require.resolve('generator-jest/generators/app'), {
-      testEnvironment: this.options['use-pwa'] ? 'browser' : 'node',
+      testEnvironment: this.options['use-pwa'] ? 'jsdom' : 'node',
       coveralls: this.props.includeCoveralls
     });
 

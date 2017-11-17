@@ -34,7 +34,7 @@
     "chalk": "^2.3.0",
     "command-exists": "^1.2.2",
     "fs-extra": "^4.0.2",
-    "generator-jest": "^1.4.2",
+    "generator-jest": "file:../generator-jest",
     "generator-license": "^5.2.0",
     "generator-travis": "^1.5.3",
     "git-remote-origin-url": "^2.0.0",
