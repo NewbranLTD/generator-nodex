@@ -161,7 +161,7 @@ module.exports = class extends Generator {
     return ncu
       .run({
         // Always specify the path to the package file
-        packageData: packages,
+        // packageData: packages,
         packageFile: pkgFile,
         // Any command-line option can be specified here.
         upgrade: toUpgrade,
@@ -170,11 +170,13 @@ module.exports = class extends Generator {
         jsonUpgraded: true // We always want this
       })
       .then(upgraded => {
-        if (this.options.installing) {
+        /*
+        If (this.options.installing) {
           this.__softUpgrade(packages, upgraded, pkgFile);
         } else {
-          this.__forceOverwrite(packages, upgraded, pkgFile, toUpgrade);
-        }
+        */
+        this.__forceOverwrite(packages, upgraded, pkgFile, toUpgrade);
+        // }
       });
   }
 };
