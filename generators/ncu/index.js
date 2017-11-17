@@ -1,6 +1,8 @@
 'use strict';
 /**
  * Allow you to perform upgrade on your packages
+ * @20171117 - the softUpgrade method is not working that is the problem with
+ * the npm-check-updates unable to work with virtual file system
  */
 const Generator = require('../../lib/index.js');
 const ncu = require('npm-check-updates');
@@ -155,11 +157,12 @@ module.exports = class extends Generator {
     const packages = this.fs.readJSON(pkgFile);
     const toUpgrade = this.options.checkonly ? false : this.options.upgrade;
     // There is an undocumented property packageData that can pass raw data to it
+    // this.log(packages);
     return ncu
       .run({
         // Always specify the path to the package file
         packageData: packages,
-        // PackageFile: pkgFile,
+        packageFile: pkgFile,
         // Any command-line option can be specified here.
         upgrade: toUpgrade,
         // These are set by default:

@@ -301,9 +301,12 @@ module.exports = class extends Generator {
     }
     // Perform an upgrade on the deps
     // the problem is the package.json is not create here yet ...
+    // event we pass the raw packages data it's not taking it
+    /*
     this.composeWith(require.resolve('../ncu'), {
       installing: true
     });
+    */
   }
 
   /**
