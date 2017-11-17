@@ -30,24 +30,39 @@ module.exports = class extends Generator {
       default: './package.json',
       desc: 'ncu-package'
     });
+    this.option('installing', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'Interval flag to change behavior'
+    });
+    // This will overwrite the upgrade option
+    // so you don't have to do upgrade=0
+    this.option('checkonly', {
+      type: Boolean,
+      required: false,
+      desc: 'Over write the upgrade'
+    });
   }
 
-  /*
-  Initializing() {
-    console.log(this.options);
-  }
-*/
-  writing() {
-    // This.log(this.options.upgrade); @20171115 this is broken
+  /**
+   * The perfect use case for default hook
+   */
+  default() {
+    const pkgFile = this.options.installing
+      ? this.destinationPath('package.json')
+      : this.options.json;
+    const toUpgrade = this.options.checkonly ? true : this.options.upgrade;
+    // There is an undocumented property packageData that can pass raw data to it
     return ncu
       .run({
         // Always specify the path to the package file
-        packageFile: this.options.json,
+        packageFile: pkgFile,
         // Any command-line option can be specified here.
-        upgrade: this.options.upgrade,
+        upgrade: toUpgrade,
         // These are set by default:
         silent: this.options.silent,
-        jsonUpgraded: true
+        jsonUpgraded: true // We always want this
       })
       .then(upgraded => {
         let oldVersions = {};

@@ -225,6 +225,9 @@ module.exports = class extends Generator {
       pkg.devDependencies['npm-check-updates'] = '*';
     }
     */
+    // @20171117 use the raw pkg data to check for updates
+    // packageData
+
     // Let's extend package.json so we're not overwriting user previous fields
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
@@ -298,7 +301,9 @@ module.exports = class extends Generator {
     }
     // Perform an upgrade on the deps
     // the problem is the package.json is not create here yet ...
-    // this.composeWith(require.resolve('../ncu'));
+    this.composeWith(require.resolve('../ncu'), {
+      installing: true
+    });
   }
 
   /**
