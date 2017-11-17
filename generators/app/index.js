@@ -2,6 +2,7 @@
 const _ = require('lodash');
 const path = require('path');
 const chalk = require('chalk');
+const fsExtra = require('fs-extra');
 const parseAuthor = require('parse-author');
 // Const cmdExist = require('command-exists');
 const extend = _.merge;
@@ -250,8 +251,16 @@ module.exports = class extends Generator {
     });
     // Setup jest
     // @TODO should let the user choose between Mocha/Chai or Jest
+    /*
+    HOW TO:
+    yo jest:test path/to/file-to-test.js
+
+    # (optional) You can specifically define your component name
+    yo jest:test path/to/file-to-test.js --componentName=useThisName
+    */
     this.composeWith(require.resolve('generator-jest/generators/app'), {
-      testEnvironment: this.options['use-pwa'] ? 'browser' : 'node',
+      // Filepath: this.destinationPath(), this has not effects
+      testEnvironment: this.options['use-pwa'] ? 'jsdom' : 'node',
       coveralls: this.props.includeCoveralls
     });
 
@@ -322,6 +331,16 @@ module.exports = class extends Generator {
     }
     // Make sure everything save into yo-rc.json
     this.config.set(_.extend(this.props, { lang: this.lang }));
+    // Back hacking to put where the __tests__ folder I want to be :)
+    const target = path.join(
+      this.destinationPath(),
+      this.options.projectRoot,
+      '__tests__'
+    );
+    const dest = path.join(this.destinationPath(), '__tests__');
+    fsExtra
+      .move(target, dest)
+      .catch(err => this.log('move __tests__ failed', chalk.red(err)));
     // Finally tell the user how to use ncu
     if (!this.options['skip-nodex-install']) {
       this.log(

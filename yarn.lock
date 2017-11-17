@@ -1661,9 +1661,8 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
-generator-jest@^1.4.2:
+"generator-jest@file:../generator-jest":
   version "1.4.2"
-  resolved "https://registry.yarnpkg.com/generator-jest/-/generator-jest-1.4.2.tgz#c60e0121341173039a938cbf93113f67508f8496"
   dependencies:
     deep-extend "^0.5.0"
     lodash.camelcase "^4.3.0"
