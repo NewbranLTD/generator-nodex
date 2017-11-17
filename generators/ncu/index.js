@@ -80,12 +80,11 @@ module.exports = class extends Generator {
   /**
    * Once the update package return it doesn't tell me which belong to where
    * so we need to find out
-   * @param {string} pkgFile where the package.json is
+   * @param {object} pkg existing one
    * @param {object} upgraded the upgraded packages
    * @return {object} pkg, curVersion
    */
-  __getDependecies(pkgFile, upgraded) {
-    const pkg = this.fs.readJSON(pkgFile);
+  __getDependecies(pkg, upgraded) {
     let curVersion = {};
     _.forEach(pkg.dependencies, (value, key) => {
       if (upgraded[key]) {
@@ -104,22 +103,23 @@ module.exports = class extends Generator {
 
   /**
    * Take the overwrite method out
-   * @param {string} pkgFile where the package.json is
+   * @param {object} packages existing one
    * @param {object} upgraded packages
    * @param {boolean} toUpgrade or not
+   * @param {string} pkgFile
    * @return {undefined}
    */
-  __forceOverwrite(pkgFile, upgraded, toUpgrade) {
+  __forceOverwrite(packages, upgraded, pkgFile, toUpgrade) {
     let oldVersions = {};
     if (toUpgrade) {
-      const { pkg, curVersion } = this.__getDependecies(pkgFile, upgraded);
+      const { pkg, curVersion } = this.__getDependecies(packages, upgraded);
       oldVersions = curVersion;
       // This will produce the same conflict error message which is fine
       // @BUG this is broken on mac just can't select the options
       // so instead we use the fs-extra to just force overwrite it
       // this.fs.writeJSON(this.options.json, pkg);
       fsExtra
-        .writeJson(this.options.json, pkg)
+        .writeJson(pkgFile, pkg)
         .then(() => {
           this.log(chalk.yellow(this.t('package.json updated!')));
         })
@@ -133,9 +133,13 @@ module.exports = class extends Generator {
 
   /**
    * Soft update during the installation
+   * @param {object} packages existing one
+   * @param {object} upgraded packages
+   * @param {string} pkgFile where the package.json is
+   * @return {undefined}
    */
-  __softUpgrade(pkgFile, upgraded) {
-    const { pkg, curVersion } = this.__getDependecies(pkgFile, upgraded);
+  __softUpgrade(packages, upgraded, pkgFile) {
+    const { pkg, curVersion } = this.__getDependecies(packages, upgraded);
     // How to detect if there is an error?
     this.fs.extendJSON(pkgFile, pkg);
     this.__displayUpgradeMsg(upgraded, curVersion);
@@ -148,12 +152,14 @@ module.exports = class extends Generator {
     const pkgFile = this.options.installing
       ? this.destinationPath(this.options.generateInto, 'package.json')
       : this.options.json;
+    const packages = this.fs.readJSON(pkgFile);
     const toUpgrade = this.options.checkonly ? false : this.options.upgrade;
     // There is an undocumented property packageData that can pass raw data to it
     return ncu
       .run({
         // Always specify the path to the package file
-        packageFile: pkgFile,
+        packageData: packages,
+        // PackageFile: pkgFile,
         // Any command-line option can be specified here.
         upgrade: toUpgrade,
         // These are set by default:
@@ -162,9 +168,9 @@ module.exports = class extends Generator {
       })
       .then(upgraded => {
         if (this.options.installing) {
-          this.__softUpgrade(pkgFile, upgraded);
+          this.__softUpgrade(packages, upgraded, pkgFile);
         } else {
-          this.__forceOverwrite(pkgFile, upgraded, toUpgrade);
+          this.__forceOverwrite(packages, upgraded, pkgFile, toUpgrade);
         }
       });
   }
