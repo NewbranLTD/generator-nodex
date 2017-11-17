@@ -258,7 +258,7 @@ module.exports = class extends Generator {
     yo jest:test path/to/file-to-test.js --componentName=useThisName
     */
     this.composeWith(require.resolve('generator-jest/generators/app'), {
-      filepath: this.destinationPath(),
+      // Filepath: this.destinationPath(), this has not effects
       testEnvironment: this.options['use-pwa'] ? 'jsdom' : 'node',
       coveralls: this.props.includeCoveralls
     });
