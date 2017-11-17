@@ -175,11 +175,13 @@ module.exports = class extends Generator {
    * Execute the prompt
    */
   prompting() {
-    return this.installerAskForModuleName()
-      .then(this._askFor.bind(this))
-      .then(this.installerAskForGithubAccount.bind(this))
-      .then(this.installerAskForNginxOption.bind(this))
-      .then(this.installerAskForInstaller.bind(this));
+    return (
+      this.installerAskForModuleName()
+        .then(this._askFor.bind(this))
+        .then(this.installerAskForGithubAccount.bind(this))
+        // .then(this.installerAskForNginxOption.bind(this))
+        .then(this.installerAskForInstaller.bind(this))
+    );
   }
 
   /**
@@ -293,14 +295,6 @@ module.exports = class extends Generator {
         content: this.options.readme
       });
     }
-    // Nodex addtionals
-    if (this.props.setupNginx) {
-      this.composeWith(require.resolve('../nginx'));
-      // Might as well ask them to setup the systemd?
-    }
-    if (this.props.usePwa) {
-      this.composeWith(require.resolve('../pwa'));
-    }
     // Perform an upgrade on the deps
     // the problem is the package.json is not create here yet ...
     // this.composeWith(require.resolve('../ncu'));
@@ -342,6 +336,13 @@ module.exports = class extends Generator {
         chalk.yellow(
           this.t(
             'Now you can run `yo nodex:ncu` to check if your packages are all up to date'
+          )
+        )
+      );
+      this.log(
+        chalk.green(
+          this.t(
+            'You can also checkout the `yo nodex:nginx` & `yo nodex:systemd` sub generator'
           )
         )
       );
