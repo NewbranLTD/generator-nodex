@@ -9,9 +9,9 @@ It is also easily composed into your own generators so you can only target your 
 This `generator-nodex` can also use as a parent class and create your own generator (instead of subclass directly from `yeoman-generator`)
 
 ```javascript
-const { ExtendedGenerator } = require('generator-nodex');
+const Generator  = require('generator-nodex/lib');
 
-module.exports = class extends ExtendedGenerator {
+module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
   }
