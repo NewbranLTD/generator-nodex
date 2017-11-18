@@ -103,7 +103,7 @@ module.exports = class extends Generator {
     }
     // Pre set the default props from the information we have at this point
     this.props = {
-      name: this.pkg.name,
+      name: this.options.name || this.pkg.name,
       description: this.pkg.description,
       version: this.pkg.version,
       homepage: this.pkg.homepage
@@ -265,6 +265,8 @@ module.exports = class extends Generator {
       // Filepath: this.destinationPath(), this has not effects
       testEnvironment: this.options['use-pwa'] ? 'jsdom' : 'node',
       coveralls: this.props.includeCoveralls
+      // @20171118 pass this not chaning where they put the bloody folder
+      // projectRoot: this.destinationRoot()
     });
 
     if (this.options.boilerplate) {
