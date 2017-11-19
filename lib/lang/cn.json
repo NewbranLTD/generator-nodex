@@ -75,5 +75,8 @@
   "Now you can run `yo nodex:ncu` to check if your packages are all up to date":
     "现在你可以运行`yo nodex:ncu`来检查你的软件包是否都是最新的",
   "You can also checkout the `yo nodex:nginx` & `yo nodex:systemd` sub generator":
-    "你也可以试用 'yo nodex：nginx` 和 `node nodex：systemd` 子生成器"
+    "你也可以试用 'yo nodex：nginx` 和 `node nodex：systemd` 子生成器",
+  "What are you going to create": "你打算开发什么？",
+  "Web application": "Web 应用程序",
+  "Module": "Module 组件"
 }
