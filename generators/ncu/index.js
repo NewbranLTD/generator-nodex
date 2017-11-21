@@ -52,6 +52,13 @@ module.exports = class extends Generator {
       required: false,
       desc: 'Over write the upgrade'
     });
+    // If set this flag then after the update will call the installer
+    this.option('auto', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'Run the installer after the upgrade'
+    });
   }
 
   /**
@@ -113,6 +120,8 @@ module.exports = class extends Generator {
    */
   __forceOverwrite(packages, upgraded, pkgFile, toUpgrade) {
     let oldVersions = {};
+    // Show what has been updated
+    this.__displayUpgradeMsg(upgraded, oldVersions, toUpgrade);
     if (toUpgrade) {
       const { pkg, curVersion } = this.__getDependecies(packages, upgraded);
       oldVersions = curVersion;
@@ -120,17 +129,18 @@ module.exports = class extends Generator {
       // @BUG this is broken on mac just can't select the options
       // so instead we use the fs-extra to just force overwrite it
       // this.fs.writeJSON(this.options.json, pkg);
-      fsExtra
+      return fsExtra
         .writeJson(pkgFile, pkg)
         .then(() => {
           this.log(chalk.yellow(this.t('package.json updated!')));
+          return true;
         })
         .catch(err => {
           this.log(chalk.red(err));
+          return false;
         });
     }
-    // Show what has been updated
-    this.__displayUpgradeMsg(upgraded, oldVersions, toUpgrade);
+    return Promise.resolve(false);
   }
 
   /**
@@ -175,7 +185,11 @@ module.exports = class extends Generator {
           this.__softUpgrade(packages, upgraded, pkgFile);
         } else {
         */
-        this.__forceOverwrite(packages, upgraded, pkgFile, toUpgrade);
+        this.__forceOverwrite(packages, upgraded, pkgFile, toUpgrade).then(install => {
+          if (install === true && this.options.auto === true) {
+            // Call the installer
+          }
+        });
         // }
       });
   }

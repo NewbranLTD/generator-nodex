@@ -1,6 +1,6 @@
 {
   "name": "generator-nodex",
-  "version": "3.1.7",
+  "version": "3.1.8",
   "description":
     "使用语言选项创建 node.js 模块 / Create a Node.js module with language option. Pass `yo nodex --lang=cn | en` ",
   "homepage": "https://github.com/NewBrandLTD/generator-nodex",
@@ -74,5 +74,8 @@
   "jest": {
     "testEnvironment": "node",
     "testPathIgnorePatterns": ["/fixtures/"]
+  },
+  "engines": {
+    "node": ">=7.00"
   }
 }
