@@ -119,12 +119,10 @@ module.exports = class extends Generator {
    * @return {undefined}
    */
   __forceOverwrite(packages, upgraded, pkgFile, toUpgrade) {
-    let oldVersions = {};
-    // Show what has been updated
-    this.__displayUpgradeMsg(upgraded, oldVersions, toUpgrade);
     if (toUpgrade) {
       const { pkg, curVersion } = this.__getDependecies(packages, upgraded);
-      oldVersions = curVersion;
+      // Show what has been updated
+      this.__displayUpgradeMsg(upgraded, curVersion, toUpgrade);
       // This will produce the same conflict error message which is fine
       // @BUG this is broken on mac just can't select the options
       // so instead we use the fs-extra to just force overwrite it
@@ -180,17 +178,12 @@ module.exports = class extends Generator {
         jsonUpgraded: true // We always want this
       })
       .then(upgraded => {
-        /*
-        If (this.options.installing) {
-          this.__softUpgrade(packages, upgraded, pkgFile);
-        } else {
-        */
         this.__forceOverwrite(packages, upgraded, pkgFile, toUpgrade).then(install => {
           if (install === true && this.options.auto === true) {
             // Call the installer
+            this.installerInstallDependencies();
           }
         });
-        // }
       });
   }
 };
