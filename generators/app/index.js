@@ -84,14 +84,14 @@ module.exports = class extends Generator {
       type: Boolean,
       required: false,
       default: false,
-      desc: 'skip-install'
+      desc: 'skip install when this running from inside another generator'
     });
     // If this option pass then we know it's an webapp
-    this.option('use-pwa', {
-      type: Boolean,
+    this.option('testEnvironment', {
+      type: String,
       required: false,
-      default: false,
-      desc: 'use-pwa'
+      default: 'node',
+      desc: 'change test enviornment jsdom or node'
     });
   }
 
@@ -218,16 +218,6 @@ module.exports = class extends Generator {
     if (this.props.keywords && this.props.keywords.length) {
       pkg.keywords = _.uniq(this.props.keywords.concat(pkg.keywords));
     }
-    // Additonal package require for performing the ncu checks
-    // @TODO to add swiss army knife
-    /*
-    if (!cmdExist('ncu')) {
-      pkg.devDependencies['npm-check-updates'] = '*';
-    }
-    */
-    // @20171117 use the raw pkg data to check for updates
-    // packageData
-
     // Let's extend package.json so we're not overwriting user previous fields
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
@@ -263,7 +253,7 @@ module.exports = class extends Generator {
     */
     this.composeWith(require.resolve('generator-jest/generators/app'), {
       // Filepath: this.destinationPath(), this has not effects
-      testEnvironment: this.options['use-pwa'] ? 'jsdom' : 'node',
+      testEnvironment: this.options.testEnvironment || 'node',
       coveralls: this.props.includeCoveralls
       // @20171118 pass this not chaning where they put the bloody folder
       // projectRoot: this.destinationRoot()
