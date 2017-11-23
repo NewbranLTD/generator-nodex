@@ -252,11 +252,11 @@ module.exports = class extends Generator {
     yo jest:test path/to/file-to-test.js --componentName=useThisName
     */
 
-    this.log(this.options.testEnvironment);
-
+    const testEnvironment = this.options.testEnvironment || 'node';
     this.composeWith(require.resolve('generator-jest/generators/app'), {
       // Filepath: this.destinationPath(), this has not effects
-      testEnvironment: this.options.testEnvironment || 'node',
+      testEnvironment: testEnvironment,
+      'test-environment': testEnvironment,
       coveralls: this.props.includeCoveralls
       // @20171118 pass this not chaning where they put the bloody folder
       // projectRoot: this.destinationRoot()
@@ -291,17 +291,11 @@ module.exports = class extends Generator {
         authorName: this.props.authorName,
         authorUrl: this.props.authorUrl,
         coveralls: this.props.includeCoveralls,
-        content: this.options.readme
+        content: this.options.readme,
+        poweredBy: this.options.poweredBy,
+        poweredByUrl: this.options.poweredByUrl
       });
     }
-    // Perform an upgrade on the deps
-    // the problem is the package.json is not create here yet ...
-    // event we pass the raw packages data it's not taking it
-    /*
-    this.composeWith(require.resolve('../ncu'), {
-      installing: true
-    });
-    */
   }
 
   /**
