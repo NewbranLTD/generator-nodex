@@ -251,6 +251,9 @@ module.exports = class extends Generator {
     # (optional) You can specifically define your component name
     yo jest:test path/to/file-to-test.js --componentName=useThisName
     */
+
+    this.log(this.options.testEnvironment);
+
     this.composeWith(require.resolve('generator-jest/generators/app'), {
       // Filepath: this.destinationPath(), this has not effects
       testEnvironment: this.options.testEnvironment || 'node',

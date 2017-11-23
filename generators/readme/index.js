@@ -54,6 +54,19 @@ module.exports = class extends Generator {
       required: false,
       desc: 'content'
     });
+
+    this.option('poweredBy', {
+      type: String,
+      required: false,
+      desc: 'add a line to the end of the READMD for advertising',
+      default: 'generator-nodex'
+    });
+
+    this.option('poweredByUrl', {
+      type: String,
+      required: false,
+      desc: 'Url to the generator'
+    });
   }
 
   writing() {
@@ -75,7 +88,11 @@ module.exports = class extends Generator {
         },
         license: pkg.license,
         includeCoveralls: this.options.coveralls,
-        content: this.options.content
+        content: this.options.content,
+        poweredBy: this.options.poweredBy,
+        poweredByUrl:
+          this.options.poweredByUrl ||
+          'https://github.com/NewbranLTD/' + this.options.poweredBy
       }
     );
   }

@@ -41,3 +41,5 @@ const <%= safeProjectName %> = require('<%= projectName %>');
 [coveralls-image]: https://coveralls.io/repos/<%= githubAccount %>/<%= projectName %>/badge.svg
 [coveralls-url]: https://coveralls.io/r/<%= githubAccount %>/<%= projectName %>
 <% } -%>
+
+Power by [<%= poweredBy %>](<%= poweredByUrl %>).
