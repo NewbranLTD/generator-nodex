@@ -78,5 +78,8 @@
     "你也可以试用 'yo nodex：nginx` 和 `node nodex：systemd` 子生成器",
   "What are you going to create": "你打算开发什么？",
   "Web application": "Web 应用程序",
-  "Module": "Module 组件"
+  "Module": "Module 组件",
+  "What git account you are going to use?": "你打算使用哪个git账户？",
+  "Do you want to setup a github page folder?":
+    "你想设置一个GitHub页面文件夹吗？"
 }
