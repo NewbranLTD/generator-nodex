@@ -8,18 +8,21 @@ describe('nodex:nginx', () => {
     description: 'systemd startup script for start up',
     environment: 'NODE_ENV=test',
     user: 'tester',
+    group: 'tester',
     nodePath: '/usr/bin/node',
     appPath: '/path/to/app/index.js'
   };
+
+  const startFileName = 'start-up.service';
 
   it('should create a systemd startup script', () => {
     return helpers
       .run(require.resolve('../generators/systemd'))
       .withPrompts(answers)
       .then(() => {
-        assert.file('start-up.conf');
-        assert.fileContent('start-up.conf', /systemd startup script for start up/);
-        assert.fileContent('start-up.conf', /NODE_ENV=test/);
+        assert.file(startFileName);
+        assert.fileContent(startFileName, /systemd startup script for start up/);
+        assert.fileContent(startFileName, /NODE_ENV=test/);
       });
   });
 
@@ -29,7 +32,7 @@ describe('nodex:nginx', () => {
       .withPrompts(answers)
       .withOptions({ generateInto: 'other' })
       .then(() => {
-        assert.file('other/start-up.conf');
+        assert.file(`other/${startFileName}`);
       });
   });
 });
