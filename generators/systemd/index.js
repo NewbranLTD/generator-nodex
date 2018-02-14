@@ -67,6 +67,13 @@ module.exports = class extends Generator {
         validate: input => input && input !== ''
       },
       {
+        name: 'group',
+        message:
+          'The system group the user belongs to (or just the user name as base group)',
+        default: this.props.user,
+        validate: input => input && input !== ''
+      },
+      {
         name: 'nodePath',
         message: 'The path to your node installation on this system',
         default: this.props.nodePath,
@@ -91,7 +98,7 @@ module.exports = class extends Generator {
   writing() {
     this._copyTpl(
       'systemd.tpl',
-      [this.options.generateInto, [this.props.appName, 'conf'].join('.')],
+      [this.options.generateInto, [this.props.appName, 'service'].join('.')],
       this.props
     );
   }
@@ -107,6 +114,7 @@ module.exports = class extends Generator {
       this.log(chalk.yellow(this.t('/etc/systemd/system folder (not symbolic link!)')));
       this.log(chalk.yellow(this.t('Then execute the following commands')));
       this.log(div);
+      this.log(chalk.cyan('sudo systemctl enable ' + this.props.appName));
       this.log(chalk.cyan('sudo systemctl daemon-reload'));
       this.log(chalk.cyan('sudo systemctl start ' + this.props.appName));
       this.log(div);

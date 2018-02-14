@@ -29,11 +29,10 @@ We are currently working on finishing the last feature before we start putting t
 2. You can import this and, use in your own generator (more detail in the wiki soon).
 3. There are several additional sub generators, more detail below.
   * nginx - this is incorporated into the nodex generator  
-  * ~~pwa - this is stand alone, you can call it via `yo nodex:pwa` (move to new project goog)~~
   * systemd - this is stand alone, you can call it via `yo nodex:systemd`
-  * ~~plop - this is stand alone, you can call it via `yo nodex:plop` (see more below)~~
   * ncu - npm-check-updates integrate into the generator
-  * ext - this is to replace the `plop` allow you to attach your own sub generator to your project (coming to v3.2.0)
+  * ~ext - this is to replace the `plop` allow you to attach your own sub generator to your project (coming to v3.2.0)~
+  * webhook - coming soon 
 
 ---
 
@@ -116,7 +115,7 @@ Here's a list of our supported options:
 - `travis` (Boolean, default true) include or not a `.travis.yml` file.
 - `githubAccount` (String) Account name for GitHub repo location.
 - `readme` (String) content of the `README.md` file. Given this option, generator-nodex will still generate the title (with badges) and the license section.
-
+- `systemd` (String) create a startup script on the Linux platform with systemd support. Just Follow the Q&A during the setup process.
 
 ### Sub generators
 

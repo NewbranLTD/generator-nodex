@@ -4,10 +4,13 @@ After=network.target
 
 [Service]
 Environment=<%= environment %>
-Type=simple
 User=<%= user %>
+Group=<%= group %>
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=<%= appName %>
 ExecStart=<%= nodePath %> <%= appPath %>
-Restart=on-failure
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
