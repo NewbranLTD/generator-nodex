@@ -7,6 +7,9 @@ const _ = require('lodash');
 const chalk = require('chalk');
 const version = '^0.7.1';
 const validate = input => input && input !== '';
+const fake = {
+  name: 'webhook'
+};
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -24,6 +27,8 @@ module.exports = class extends Generator {
   initializing() {
     // Just guessing
     this.props.appPath = this.destinationPath();
+    this.package = this.fs.readJSON(this.destinationPath('package.json'));
+    this.props.scriptName = this._toDash((this.package || fake).name);
   }
 
   prompting() {
@@ -66,17 +71,14 @@ module.exports = class extends Generator {
 
   writing() {
     try {
-      let _package = this.fs.readJSON(this.destinationPath('package.json'));
-      this.props.appName = _package.name;
-      _package.dependencies = _.extend({}, _package.dependencies, {
+      this.package.dependencies = _.extend({}, this.package.dependencies, {
         'github-webhook-handler': version
       });
-      this.fs.writeJSON(this.destinationPath('package.json'), _package);
+      this.fs.writeJSON(this.destinationPath('package.json'), this.package);
     } catch (e) {
       this.addPackageFailed = true;
     }
-    const name = this.props.appName || 'stock';
-    const fileName = [this._toDash(name), '-webhook', 'service'].join('.');
+    const fileName = [this.props.scriptName, 'js'].join('.');
     this._copyTpl('webhook.tpl', [this.options.generateInto, fileName], this.props);
   }
 

@@ -4,6 +4,8 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const packageName = 'generator-nodex';
 
+jest.setTimeout(10000);
+
 describe('nodex:app', () => {
   beforeEach(() => {
     jest.mock('npm-name', () => {
