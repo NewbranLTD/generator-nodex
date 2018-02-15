@@ -64,7 +64,6 @@ module.exports = class extends Generator {
       }
     ];
     return this.prompt(prompts).then(props => {
-      props.appName = this._toDash(props.appName);
       this.props = _.extend(this.props, props);
     });
   }
