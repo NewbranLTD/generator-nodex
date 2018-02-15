@@ -2,7 +2,7 @@
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
-describe('nodex:nginx', () => {
+describe('nodex:systemd', () => {
   const answers = {
     appName: 'start up',
     description: 'systemd startup script for start up',

@@ -8,6 +8,8 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 const packageName = 'generator-nodex';
 
+jest.setTimeout(10000);
+
 const appDescription = `A node generator with extended features by NEWBRAN.CH`;
 
 describe('nodex:app', () => {
@@ -27,7 +29,7 @@ describe('nodex:app', () => {
   });
 
   describe('running on new project', () => {
-    it('scaffold a full project', () => {
+    test('scaffold a full project', () => {
       const answers = {
         name: packageName,
         description: appDescription,
@@ -99,7 +101,7 @@ describe('nodex:app', () => {
   });
 
   describe('running on existing project', () => {
-    it('Keeps current Readme and extend package.json fields', () => {
+    test('Keeps current Readme and extend package.json fields', () => {
       const pkg = {
         version: '1.0.34',
         description: 'lots of fun',
@@ -125,7 +127,7 @@ describe('nodex:app', () => {
   });
 
   describe('--no-travis', () => {
-    it('skip .travis.yml', () => {
+    test('skip .travis.yml', () => {
       return helpers
         .run(require.resolve('../generators/app'))
         .withOptions({ travis: false })
@@ -134,7 +136,7 @@ describe('nodex:app', () => {
   });
 
   describe('--projectRoot', () => {
-    it('include the raw files', () => {
+    test('include the raw files', () => {
       return helpers
         .run(require.resolve('../generators/app'))
         .withOptions({ projectRoot: 'generators' })
@@ -148,7 +150,7 @@ describe('nodex:app', () => {
   });
 
   describe('--no-editorconfig', () => {
-    it('include the raw files', () => {
+    test('include the raw files', () => {
       return helpers
         .run(require.resolve('../generators/app'))
         .withOptions({ editorconfig: false })
