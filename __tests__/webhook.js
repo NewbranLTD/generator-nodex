@@ -11,7 +11,7 @@ describe('nodex:webhook', () => {
     branch: 'refs/heads/master'
   };
 
-  const startFileName = 'myApp-webhook.js';
+  const startFileName = 'webhook.js';
 
   it('should create a webhook script', () => {
     return helpers

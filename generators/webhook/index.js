@@ -68,6 +68,12 @@ module.exports = class extends Generator {
         message: 'Which branch you want to excute when webhook callback',
         default: 'refs/heads/master',
         validate: validate
+      },
+      {
+        name: 'cmd',
+        message: 'What command you want to run',
+        default: 'git fetch origin master --no-edit',
+        validate: validate
       }
     ];
     return this.prompt(prompts).then(props => {
@@ -84,7 +90,8 @@ module.exports = class extends Generator {
     } catch (e) {
       this.addPackageFailed = true;
     }
-    const fileName = [[this.props.scriptName, 'webhook'].join('-'), 'js'].join('.');
+    const fileName = 'webhook.js';
+    // [[this.props.scriptName, 'webhook'].join('-'), 'js'].join('.');
     this._copyTpl('webhook.tpl', [this.options.generateInto, fileName], this.props);
   }
 
