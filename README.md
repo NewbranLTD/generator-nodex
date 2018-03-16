@@ -118,6 +118,7 @@ Here's a list of our supported options:
 - `githubAccount` (String) Account name for GitHub repo location.
 - `readme` (String) content of the `README.md` file. Given this option, generator-nodex will still generate the title (with badges) and the license section.
 - `systemd` (String) create a startup script on the Linux platform with systemd support. Just Follow the Q&A during the setup process.
+- `webhook` (String) create a webhook callback script that support github, gitee or gitlab. Based on `git-webhook-ci`
 
 ### Sub generators
 
@@ -132,7 +133,9 @@ Remember you can see the options of each sub generators by running `yo nodex:sub
 - `nodex:git`
 - `nodex:nsp`
 - `nodex:readme`
-
+- `nodex:systemd`
+- `nodex:webhook`
+- `nodex:nginx`
 
 
 ## License
