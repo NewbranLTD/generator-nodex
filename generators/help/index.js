@@ -4,7 +4,7 @@
  * and their usage
  */
 'use strict';
-// Const { spawn } = require('child_process');
+const chalk = require('chalk');
 const path = require('path');
 const glob = require('glob');
 const Generator = require('../../lib');
@@ -22,7 +22,7 @@ module.exports = class extends Generator {
             const parts = f.split('/');
             return parts[parts.length - 1];
           })
-          .filter(d => d !== 'app');
+          .filter(d => d !== 'app' && d !== 'help');
         dirs.push('EXIT');
         this.props.commands = dirs;
         resolver(dirs);
@@ -48,7 +48,7 @@ module.exports = class extends Generator {
   writing() {
     return new Promise(resolver => {
       if (this.props.sub) {
-        return this.composeWith(require.resolve('../' + this.props.sub));
+        return this.log('Run:', chalk.yellow(`yo nodex:${this.props.sub}`));
       }
       resolver(true);
     });
