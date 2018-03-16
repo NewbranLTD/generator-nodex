@@ -10,16 +10,16 @@
   "keywords": ["yeoman-generator", "scaffold", "node", "module", "cli"],
   "devDependencies": {
     "coveralls": "^3.0.0",
-    "eslint": "^4.17.0",
+    "eslint": "^4.18.2",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-config-xo": "^0.20.0",
+    "eslint-config-xo": "^0.20.1",
     "eslint-plugin-prettier": "^2.6.0",
     "husky": "^0.14.3",
-    "jest": "^22.3.0",
-    "jest-cli": "^22.3.0",
-    "lint-staged": "^6.1.0",
-    "nsp": "^3.1.0",
-    "prettier": "^1.10.2",
+    "jest": "^23.0.0-alpha.0",
+    "jest-cli": "^23.0.0-alpha.0",
+    "lint-staged": "^7.0.0",
+    "nsp": "^3.2.1",
+    "prettier": "^1.11.1",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.7.0"
   },
@@ -31,7 +31,7 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "chalk": "^2.3.1",
+    "chalk": "^2.3.2",
     "command-exists": "^1.2.2",
     "fs-extra": "^5.0.0",
     "generator-jest": "^1.5.0",
@@ -42,11 +42,11 @@
     "glob": "^7.1.2",
     "inquirer-npm-name": "^3.0.0",
     "lodash": "^4.17.5",
-    "npm-check-updates": "^2.14.0",
+    "npm-check-updates": "^2.14.1",
     "parse-author": "^2.0.0",
     "username": "^3.0.0",
     "when": "^3.7.8",
-    "yeoman-generator": "^2.0.2",
+    "yeoman-generator": "^2.0.3",
     "yosay": "^2.0.1"
   },
   "eslintConfig": {
