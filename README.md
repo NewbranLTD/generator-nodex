@@ -31,8 +31,7 @@ We are currently working on finishing the last feature before we start putting t
   * nginx - this is incorporated into the nodex generator  
   * systemd - this is stand alone, you can call it via `yo nodex:systemd`
   * ncu - npm-check-updates integrate into the generator
-  * ~ext - this is to replace the `plop` allow you to attach your own sub generator to your project (coming to v3.2.0)~
-  * webhook - coming soon
+  * webhook - create poort man webhook ci support github, gitee or gitlab
 
 You can run `yo nodex:help` to see the full list of sub generators available.
 
@@ -117,8 +116,6 @@ Here's a list of our supported options:
 - `travis` (Boolean, default true) include or not a `.travis.yml` file.
 - `githubAccount` (String) Account name for GitHub repo location.
 - `readme` (String) content of the `README.md` file. Given this option, generator-nodex will still generate the title (with badges) and the license section.
-- `systemd` (String) create a startup script on the Linux platform with systemd support. Just Follow the Q&A during the setup process.
-- `webhook` (String) create a webhook callback script that support github, gitee or gitlab. Based on `git-webhook-ci`
 
 ### Sub generators
 
