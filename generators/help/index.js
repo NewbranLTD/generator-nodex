@@ -1,9 +1,9 @@
+'use strict';
 /**
  * Due to this generator has a lot extra functionality
  * Create this just to allow the user to see how many funcitons
  * and their usage
  */
-'use strict';
 const chalk = require('chalk');
 const path = require('path');
 const glob = require('glob');

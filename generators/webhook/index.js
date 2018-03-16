@@ -5,7 +5,7 @@
 const Generator = require('../../lib/index.js');
 const _ = require('lodash');
 const chalk = require('chalk');
-const version = '^0.7.1';
+const version = '^0.6.1';
 const validate = input => input && input !== '';
 const fake = {
   name: 'webhook'
@@ -34,6 +34,13 @@ module.exports = class extends Generator {
   prompting() {
     const prompts = [
       {
+        name: 'provider',
+        message: 'Which git provider would you like to use',
+        type: 'list',
+        choices: ['github', 'gitlab', 'gitee'],
+        default: 'github'
+      },
+      {
         name: 'webPath',
         message: 'The path to your webhook url (excluding the domain name)',
         default: '/webhook',
@@ -47,13 +54,13 @@ module.exports = class extends Generator {
       {
         name: 'cwd',
         message: 'The directory where you execute this script',
-        default: this.props.appPath,
+        default: './',
         validate: validate
       },
       {
         name: 'port',
         message: 'The port number where you run this webhook',
-        default: 8080,
+        default: 8081,
         validate: validate
       },
       {
@@ -71,13 +78,13 @@ module.exports = class extends Generator {
   writing() {
     try {
       this.package.dependencies = _.extend({}, this.package.dependencies, {
-        'github-webhook-handler': version
+        'git-webhook-ci': version
       });
       this.fs.writeJSON(this.destinationPath('package.json'), this.package);
     } catch (e) {
       this.addPackageFailed = true;
     }
-    const fileName = [this.props.scriptName, 'js'].join('.');
+    const fileName = [[this.props.scriptName, 'webhook'].join('-'), 'js'].join('.');
     this._copyTpl('webhook.tpl', [this.options.generateInto, fileName], this.props);
   }
 
