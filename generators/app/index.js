@@ -93,6 +93,12 @@ module.exports = class extends Generator {
       default: 'node',
       desc: 'change test enviornment jsdom or node'
     });
+    // The footer for the README
+    this.option('poweredBy', {
+      type: String,
+      required: false,
+      default: 'nodex'
+    });
   }
 
   initializing() {
