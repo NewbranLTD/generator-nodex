@@ -32,7 +32,9 @@ We are currently working on finishing the last feature before we start putting t
   * systemd - this is stand alone, you can call it via `yo nodex:systemd`
   * ncu - npm-check-updates integrate into the generator
   * ~ext - this is to replace the `plop` allow you to attach your own sub generator to your project (coming to v3.2.0)~
-  * webhook - coming soon 
+  * webhook - coming soon
+
+You can run `yo nodex:help` to see the full list of sub generators available.
 
 ---
 
